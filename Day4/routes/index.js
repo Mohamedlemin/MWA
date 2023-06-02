@@ -7,8 +7,11 @@ const gameController = require("../controllers/gameController")
 router.route("/games")
 .get(gameController.getAll)
 
-router.route("/games/:firstNum")
-.get(gameController.getRequestParams)
+router.route("/games")
+.post(gameController.createGame)
+
+router.route("/games/:gameID")
+.delete(gameController.deleteGame)
 
 
 

@@ -4,12 +4,24 @@ const  callbackify = require("util").callbackify
 
 const getAllGamesWithCallBack = callbackify(function (offset) {
     return dbconection.getConnection()
-                        .collection("games")
+                        .collection(process.env.GAMES)
                         .find()
                         .skip(offset)
                         .limit(10)
                         .toArray();
 
+})
+
+const createGameWithCallBack = callbackify(function (data) {
+    return dbconection.getConnection()
+                        .collection(process.env.GAMES)
+                        .insertOne(data)
+})
+
+const deleteGameWithCallBack = callbackify(function (gameID) {
+    return dbconection.getConnection()
+    .collection(process.env.GAMES)
+    .deleteOne(gameID)
 })
 
  function getAll(req, res) {
@@ -32,15 +44,66 @@ const getAllGamesWithCallBack = callbackify(function (offset) {
    
     }
 
- function getRequestParams(req, res) {
-    console.log("Post request received");
-    const pathParam = parseInt(req.params.firstNum)
-    const queryString = parseInt(req.query.secondNum)
-    console.log(pathParam*queryString);
-    res.status(200).json(pathParam*queryString);
+ function createGame(req, res) {
+    let newGame = {}
+    if (req.body && req.body.title
+        && req.body.price &&
+        req.body.minAge  && 
+        req.body.minPlayers) {
+
+       newGame.title =   req.body.title
+       newGame.price =   parseFloat(req.body.price)
+
+       const minAge = parseInt(req.body.minAge)
+       if (minAge >= 7 && minAge <= 99) {
+        newGame.minAge = minAge
+       }else {
+        res.status(500)
+        res.json("min Age must be between 7 and 9")
+       }
+       const minPlayers=parseInt(req.body.minPlayers)
+       if (minPlayers>=1 && minPlayers <= 10) {
+        newGame.minPlayers = minPlayers
+       }else {
+        res.status(500)
+        res.json("min players number must be between 1 and 10")
+       } 
+
+        createGameWithCallBack(newGame,function (err,acknowledged) {
+            if (err) {
+                res.status(500).json("error : "+ err)
+            }
+            res.status(200).json("inserted ID " + acknowledged.insertedId)
+        })
+
+        }else{
+            res.status(500)
+            res.json("title,minAge,minPlayers or price is missing")
+        }
+
+    }
+
+
+ function deleteGame(req,res) {
+    let gameObjectID = {}
+    const gameID = req.params.gameID;
+    gameObjectID._id=gameID
+
+    console.log(gameID)
+    console.log(gameObjectID)
+    deleteGameWithCallBack(gameObjectID,function (err,acknowledged) {
+        if(err){
+            res.status(500)
+            res.json("check the game ID")
+        }
+        res.status(200)
+        res.json(acknowledged)
+    })
+        
     }
 
 module.exports = {
     getAll,
-    getRequestParams
+    createGame,
+    deleteGame
 }
