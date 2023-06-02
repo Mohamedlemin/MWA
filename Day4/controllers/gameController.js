@@ -1,10 +1,35 @@
+const dbconection  = require("../data/dbconection");
+const  callbackify = require("util").callbackify
 
-const gameData = require("../data/games.json")
 
+const getAllGamesWithCallBack = callbackify(function (offset) {
+    return dbconection.getConnection()
+                        .collection("games")
+                        .find()
+                        .skip(offset)
+                        .limit(10)
+                        .toArray();
 
- function getAll(_req, res) {
-    console.log("GET All games request received");
-    res.status(200).json(gameData);
+})
+
+ function getAll(req, res) {
+    let offset = 0;
+    let count = 4;
+    if (req.query && req.query.offset) {
+        offset = parseInt(req.query.offset,10)
+    }
+    if (req.query && req.query.count) {
+        count = parseInt(req.query.count,10)
+    }
+    getAllGamesWithCallBack(offset,count,function(err,data) {
+         if (err) {
+            console.log(err);
+         }
+         console.log("done");
+         res.status(200).json(data);
+    });
+
+   
     }
 
  function getRequestParams(req, res) {

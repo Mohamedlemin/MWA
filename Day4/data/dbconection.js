@@ -9,7 +9,7 @@ let _connection = null;
 
 const open = function () {
     console.log("open called");
-    if (null === _connection) {
+    if (null === getConnection()) {
         console.log("get != null");
         console.log(process.env.DB_URL);
         mongodbConnectionWithCallBack("mongodb://127.0.0.1:27017",function (err,client) {
@@ -23,12 +23,12 @@ const open = function () {
         })
     }
 }
-    const get = function(){
+const getConnection = function() {
         return _connection;
     }
 
     module.exports = {
         open,
-        get
+        getConnection
     }
     
