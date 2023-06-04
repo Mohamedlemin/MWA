@@ -39,6 +39,53 @@ const addOne = function (req,res) {
     });
 }
 
+
+const FullupdatePMPL = function (req, res) {
+    const pmplID = req.params.pmplID;
+    const updatedData = req.body;
+  
+    pmpl.findByIdAndUpdate(
+      pmplID,
+      updatedData,
+      { new: true },
+      function (err, updatedPMPL) {
+        if (err) {
+          console.error('Error updating PMPL:', err);
+          res.status(500).json({ error: 'Failed to update PMPL' });
+        } else if (!updatedPMPL) {
+          res.status(404).json({ error: 'PMPL not found' });
+        } else {
+          console.log('Updated PMPL:', updatedPMPL);
+          res.status(200).json(updatedPMPL);
+        }
+      }
+    );
+  };
+
+  const patchUpdate= function (req, res) {
+    const pmplID = req.params.pmplID;
+    const updatedData = req.body;
+  
+    pmpl.findByIdAndUpdate(
+      pmplID,
+      { $set: updatedData },
+      { new: true },
+      function (err, updatedPMPL) {
+        if (err) {
+          console.error('Error updating PMPL:', err);
+          res.status(500).json({ error: 'Failed to update PMPL' });
+        } else if (!updatedPMPL) {
+          res.status(404).json({ error: 'PMPL not found' });
+        } else {
+          console.log('Updated PMPL:', updatedPMPL);
+          res.status(200).json(updatedPMPL);
+        }
+      }
+    );
+  };
+  
+  
+
 const deletePMPL = function (req, res) {
     const pmplID = req.params.pmplID;
   
@@ -58,5 +105,7 @@ const deletePMPL = function (req, res) {
 module.exports = {
     getAll,
     addOne,
+    FullupdatePMPL,
+    patchUpdate,
     deletePMPL
 }

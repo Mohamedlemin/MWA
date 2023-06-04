@@ -1,6 +1,5 @@
 const mongoose = require("mongoose")
 const pmpl = mongoose.model(process.env.PMPL_MODEL)
-// const team = mongoose.model(process.env.TEAM_COLLECTION)
 const teamCollection = process.env.TEAM_COLLECTION
 
 const getTeams = function(req,res){
@@ -30,57 +29,6 @@ const getTeams = function(req,res){
   };
   
   
-  
-
-  // const addOneTeam = function(req, res)  {
-  //     const pmplID = req.params.pmplID;
-  //     const { players } = req.body;
-
-  //     if (!Array.isArray(players)) {
-  //       res.status(400).json({ error: 'Invalid players data' });
-  //       return;
-  //     }
-    
-    
-  //     const newPlayers = players.map(player => ({
-  //       name: player.name,
-  //       country: player.country,
-  //       role: player.role
-  //     }));
-    
-  //     const newTeam = {
-  //       name : req.body.name,
-  //       country:req.body.country,
-  //       Best_Moment_clip:req.body.Best_Moment_clip,
-  //       Description_clip:req.body.Description_clip,
-  //       players: newPlayers
-  //     };
-    
-  //     pmpl.teams.create(function (error, savedTeam) {
-  //       if (error) {
-  //         console.error('Error creating team:', error);
-  //         res.status(500).json({ error: 'Failed to create team within PMPL' });
-  //       } else {
-  //         pmpl.findByIdAndUpdate(
-  //           pmplID,
-  //           { $push: { teams: savedTeam._id } },
-  //           { new: true },
-  //           function (error, updatedPMPL) {
-  //             if (error) {
-  //               console.error('Error updating PMPL:', error);
-  //               res.status(500).json({ error: 'Failed to update PMPL with new team' });
-  //             } else {
-  //               console.log('New team created within PMPL:', updatedPMPL);
-  //               res.status(201).json(updatedPMPL);
-  //             }
-  //           }
-  //         );
-  //       }
-  //     });
-  //   }
-
-
-
     const addOneTeam= function(req, res) {
       console.log("Add One Team Controller");
       const pmplId= req.params.pmplID;
@@ -88,18 +36,18 @@ const getTeams = function(req,res){
       console.log("Found pmpl ", pmpl);
       const response= { status: 200, message: pmpl };
       if (err) {
-      console.log("Error finding pmpl");
-      response.status= 500;
-      response.message= err;
+          console.log("Error finding pmpl");
+          response.status= 500;
+          response.message= err;
       } else if (!pmpl) {
-      console.log("Error finding pmpl");
-      response.status= 404;
-      response.message= {"message": "pmpl ID not found "+pmplId};
+          console.log("Error finding pmpl");
+          response.status= 404;
+          response.message= {"message": "pmpl ID not found "+pmplId};
       }
       if (pmpl) {
-      _addTeam(req, res, pmpl);
+        _addTeam(req, res, pmpl);
       } else {
-      res.status(response.status).json(response.message);
+        res.status(response.status).json(response.message);
       }
       });
       }
@@ -117,11 +65,11 @@ const getTeams = function(req,res){
           country: player.country,
           role: player.role
         }));
-        pmpl.teams.name= req.body.name;
-        pmpl.teams.country= req.body.country;
-        pmpl.teams.Best_Moment_clip= req.body.Best_Moment_clip;
-        pmpl.teams.Description_clip= req.body.Description_clip;
-        pmpl.teams.players = newPlayers
+          pmpl.teams.name= req.body.name;
+          pmpl.teams.country= req.body.country;
+          pmpl.teams.Best_Moment_clip= req.body.Best_Moment_clip;
+          pmpl.teams.Description_clip= req.body.Description_clip;
+          pmpl.teams.players = newPlayers
         pmpl.save(function(err, updatedpmpl) {
         const response= { status: 200, message: [] };
         if (err) {
@@ -136,12 +84,102 @@ const getTeams = function(req,res){
         }
 
 
+        const fullupdate = function (req, res) {
+          const pmplID = req.params.pmplID;
+          const teamID = req.params.teamID;
+          const updatedData = req.body;
+        
+          pmpl.findById(pmplID, function (err, foundPMPL) {
+            if (err) {
+              console.error('Error finding PMPL:', err);
+              res.status(500).json({ error: 'Failed to update team' });
+            } else if (!foundPMPL) {
+              res.status(404).json({ error: 'PMPL not found' });
+            } else {
+              const teamToUpdate = foundPMPL.teams.id(teamID);
+              if (!teamToUpdate) {
+                res.status(404).json({ error: 'Team not found' });
+              } else {
+                teamToUpdate.set(updatedData);
+                foundPMPL.save(function (err, updatedPMPL) {
+                  if (err) {
+                    console.error('Error updating PMPL:', err);
+                    res.status(500).json({ error: 'Failed to update team' });
+                  } else {
+                    console.log('Updated team:', teamToUpdate);
+                    res.status(200).json(teamToUpdate);
+                  }
+                });
+              }
+            }
+          });
+        };
         
 
+        const patchUpdate = function (req, res) {
+          const pmplID = req.params.pmplID;
+          const teamID = req.params.teamID;
+          const updatedData = req.body;
+        
+          pmpl.findById(pmplID, function (err, foundPMPL) {
+            if (err) {
+              console.error('Error finding PMPL:', err);
+              res.status(500).json({ error: 'Failed to update team' });
+            } else if (!foundPMPL) {
+              res.status(404).json({ error: 'PMPL not found' });
+            } else {
+              const teamToUpdate = foundPMPL.teams.id(teamID);
+              if (!teamToUpdate) {
+                res.status(404).json({ error: 'Team not found' });
+              } else {
+                Object.keys(updatedData).forEach(key => {
+                  teamToUpdate[key] = updatedData[key];
+                });
+        
+                foundPMPL.save(function (err, updatedPMPL) {
+                  if (err) {
+                    console.error('Error updating PMPL:', err);
+                    res.status(500).json({ error: 'Failed to update team' });
+                  } else {
+                    console.log('Updated team:', teamToUpdate);
+                    res.status(200).json(teamToUpdate);
+                  }
+                });
+              }
+            }
+          });
+        };
+        
+
+        const deleteTeam = function (req, res) {
+          const pmplID = req.params.pmplID;
+          const teamID = req.params.teamID;
+        
+          pmpl.findByIdAndUpdate(
+            pmplID,
+            { $pull: { teams: { _id: teamID } } },
+            { new: true },
+            function (err, updatedPMPL) {
+              if (err) {
+                console.error('Error deleting team:', err);
+                res.status(500).json({ error: 'Failed to delete team' });
+              } else if (!updatedPMPL) {
+                res.status(404).json({ error: 'PMPL not found' });
+              } else {
+                console.log('Deleted team:', teamID);
+                res.status(200).json({ message: 'Team deleted successfully' });
+              }
+            }
+          );
+        };
+        
 
   
 module.exports = {
   getTeams,
   getOneTeam,
-  addOneTeam
+  addOneTeam,
+  fullupdate,
+  patchUpdate,
+  deleteTeam
 }

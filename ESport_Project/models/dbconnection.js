@@ -2,7 +2,6 @@ const mongoose = require('mongoose');
 const mongoURI = process.env.DB_URL;
 const db = mongoose.connection;
 require("./pmpl-model")
-require("./team-model")
 
 const callbackify = require("util").callbackify
 

@@ -1,7 +1,6 @@
 require("dotenv").config()
 require('./models/dbconnection');
 require('./models/pmpl-model')
-require('./models/team-model')
 const express = require("express")
 
 
