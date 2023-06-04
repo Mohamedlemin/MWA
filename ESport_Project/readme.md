@@ -18,7 +18,7 @@ $67 843 988
 
 PMPL : PUBG Mobile Pro League
 
-PMPL TYPE : Arabia
+PMPL REGION : Arabia
             Africa
             North Amarica
             Europe
