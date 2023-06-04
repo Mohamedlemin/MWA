@@ -1,18 +1,14 @@
 
 const mongoose = require("mongoose")
+const teamSchema = require("./team-model")
+
 
 const pmplSchema = mongoose.Schema({
     title : String,
-    prize : Number,
+    prize : String,
     region : String,
-    teams : [
-        {
-            type: mongoose.Schema.Types.ObjectId,
-            ref : 'Team',
-            required : true,
-
-        }
-    ]
+    year : Number,
+    teams : [teamSchema] 
 
 })
 

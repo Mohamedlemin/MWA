@@ -38,6 +38,7 @@ process.on('SIGINT', () => {
   });
 });
 
+
 process.once("SIGUSR2", function() {
     dbcloseWithCallback(function() {
     console.log(process.env.SIGUSR2_MESSAGE);

@@ -28,7 +28,7 @@ PMPL REGION : Arabia
 PMPL ARABIA Teams spring 2023: 
             Nigma Galaxy : iraqi team 
                          best Moment clip : https://youtu.be/SUQlqxgp6SQ
-                         description clip : https://youtu.be/i2GMlKFcMLk
+                         description clip : https://youtu.be/VIXaxWtsxxc
                          Players : RAOUF -> Algeria
                                    Freak -> iraq
                                    LORD -> iraq
@@ -36,6 +36,7 @@ PMPL ARABIA Teams spring 2023:
                                    Koups -> USA
 
             Quest Esport : Saudi team
+                        description clip : https://youtu.be/qu0f04ove2c
                            Palyers : AZIZ -> KSA
                                      KANTE -> KSA
                                      ALHAJI -> iraq
@@ -43,9 +44,19 @@ PMPL ARABIA Teams spring 2023:
             NASR Esport : saudi team
             R8 Esports : saudi team
             Falcons Esport : saudi team
+                    description clip : https://youtu.be/6sUz1_HDtRI
             Twisted Mind : saudi team
             GEEKAY : Syria team
+                    best moment : https://youtu.be/V6A99bhfmIY
+                    desription : https://youtu.be/JAblxeEs4Co
             4K Esport  : Kurdistan team
             IKURD Esport : Kurdistan team
+                        description clip : https://youtu.be/JAZRXzopsSE
             GQ team : Russia
             Brute Force : Russia
+
+
+
+s2g : https://youtu.be/fzjMMORe6xc
+
+A7 https://youtu.be/v25SmLP8_Js
