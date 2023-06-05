@@ -17,6 +17,6 @@ app.use("/",express.static(path.join(__dirname, public_folder)));
 app.use("/api",router)
 
 app.listen(process.env.PORT,()=>{
-    console.log("connected to server");
+    console.log("connected to the server");
 })
 
