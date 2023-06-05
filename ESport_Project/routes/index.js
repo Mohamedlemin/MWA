@@ -2,7 +2,6 @@ const express = require("express")
 const router = express.Router()
 const pmplController = require("../controllers/pmplController")
 const teamController = require("../controllers/teamController")
-const { patch } = require(".")
 
 
 // PMPL routes

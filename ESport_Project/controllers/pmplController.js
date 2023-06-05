@@ -1,20 +1,37 @@
 const mongoose = require("mongoose")
 const pmpl = mongoose.model(process.env.PMPL_MODEL)
 
-const getAll = function(req,res) {
-    let offset = 0;
-    let count = 10;
-    if (req.query && req.query.offset) {
-        offset = parseInt(req.query.offset,10);
+// --------------------------------------------------------
+const getAll = function(req, res) {
+  let offset = 0;
+  let count = 10;
+  if (req.query && req.query.offset) {
+    offset = parseInt(req.query.offset, 10);
+    if (isNaN(offset) || offset < 0) {
+      return res.status(400).json({ error: 'Invalid offset value' });
     }
-    if (req.query && req.query.count) {
-        count = parseInt(req.query.count,10);
+  }
+  if (req.query && req.query.count) {
+    count = parseInt(req.query.count, 10);
+    if (isNaN(count) || count < 1) {
+      return res.status(400).json({ error: 'Invalid count value' });
     }
-    pmpl.find().skip(offset).limit(count).exec(function(err,pmpls){
-        console.log("found pmpls : "+pmpl.length);
-        res.json(pmpls);
-    })
-}
+  }
+  pmpl
+    .find()
+    .skip(offset)
+    .limit(count)
+    .exec(function(err, pmpls) {
+      if (err) {
+        console.error('Error retrieving PMPLs:', err);
+        return res.status(500).json({ error: 'Failed to retrieve PMPLs' });
+      }
+      console.log('Found PMPLs:', pmpls.length);
+      return res.json(pmpls);
+    });
+};
+
+// --------------------------------------------------------
 
 const addOne = function (req,res) {
     const { title, prize, region, teams } = req.body;
@@ -39,6 +56,7 @@ const addOne = function (req,res) {
     });
 }
 
+// --------------------------------------------------------
 
 const FullupdatePMPL = function (req, res) {
     const pmplID = req.params.pmplID;
@@ -62,6 +80,8 @@ const FullupdatePMPL = function (req, res) {
     );
   };
 
+// --------------------------------------------------------
+
   const patchUpdate= function (req, res) {
     const pmplID = req.params.pmplID;
     const updatedData = req.body;
@@ -84,7 +104,7 @@ const FullupdatePMPL = function (req, res) {
     );
   };
   
-  
+// --------------------------------------------------------
 
 const deletePMPL = function (req, res) {
     const pmplID = req.params.pmplID;

@@ -41,7 +41,6 @@ PMPL ARABIA Teams spring 2023:
                                      KANTE -> KSA
                                      ALHAJI -> iraq
                                      Fhidan -> KSA
-            NASR Esport : saudi team
             R8 Esports : saudi team
             Falcons Esport : saudi team
                     description clip : https://youtu.be/6sUz1_HDtRI
@@ -53,7 +52,39 @@ PMPL ARABIA Teams spring 2023:
             IKURD Esport : Kurdistan team
                         description clip : https://youtu.be/JAZRXzopsSE
             GQ team : Russia
-            Brute Force : Russia
+            Brute Force : Russia 
+
+                        1. NASR Esports:
+                        - Player 1: Lootah
+                        - Player 2: MXRTIN
+                        - Player 3: Mavia
+                        - Player 4: S2D
+
+                        2. Sudor Esports:
+                        - Player 1: Alpachino
+                        - Player 2: Meov
+                        - Player 3: DeathGun
+                        - Player 4: Thunder
+
+                        3. Gunz Esports:
+                        - Player 1: Hunter
+                        - Player 2: WizZ
+                        - Player 3: LioN
+                        - Player 4: D3M0
+
+                        4. Rico Infinity Team:
+                        - Player 1: DrL0ck
+                        - Player 2: H3LLx
+                        - Player 3: X3S
+                        - Player 4: JAROMAN
+
+                        5. Falcons Esports:
+                        - Player 1: Silent Killer
+                        - Player 2: BuFalo
+                        - Player 3: Devilhunter
+                        - Player 4: Dark
+
+
 
 
 

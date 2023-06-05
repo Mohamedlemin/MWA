@@ -2,15 +2,27 @@ const mongoose = require("mongoose")
 const pmpl = mongoose.model(process.env.PMPL_MODEL)
 const teamCollection = process.env.TEAM_COLLECTION
 
+// --------------------------------------------------------
+
 const getTeams = function(req,res){
     const pmplID = req.params.pmplID;
     pmpl.findById(pmplID)
     .select(teamCollection).exec(function (err,pmpl) {
-      console.log(pmpl.teams);
-      res.status(200).json(pmpl.teams)
-    })
+      if (err) {
+        console.error('Error retrieving teams:', err);
+        return res.status(500).json({ error: 'Failed to retrieve teams' });
+      }
+      if (!pmpl) {
+        return res.status(404).json({ error: 'PMPL not found' });
+      }
+      console.log('Teams retrieved:', pmpl.teams);
+
+      return res.status(200).json(pmpl.teams);
+    });
+
   
   }
+// --------------------------------------------------------
 
   const getOneTeam = function (req, res) {
     const pmplID = req.params.pmplID;
@@ -28,8 +40,9 @@ const getTeams = function(req,res){
       });
   };
   
-  
-    const addOneTeam= function(req, res) {
+// --------------------------------------------------------
+
+  const addOneTeam= function(req, res) {
       console.log("Add One Team Controller");
       const pmplId= req.params.pmplID;
       pmpl.findById(pmplId).select("teams").exec(function(err, pmpl) {
@@ -49,13 +62,13 @@ const getTeams = function(req,res){
       } else {
         res.status(response.status).json(response.message);
       }
-      });
-      }
+  });
+}
+// --------------------------------------------------------
 
-      const _addTeam= function (req, res, pmpl) {
+ const _addTeam= function (req, res, pmpl) {
               const { players } = req.body;
-
-        if (!Array.isArray(players)) {
+       if (!Array.isArray(players)) {
           res.status(400).json({ error: 'Invalid players data' });
           return;
         }
@@ -73,17 +86,17 @@ const getTeams = function(req,res){
         pmpl.save(function(err, updatedpmpl) {
         const response= { status: 200, message: [] };
         if (err) {
-        response.status= 500;
-        response.message= err;
+          response.status= 500;
+          response.message= err;
         } else {
-        response.status= 201;
-        response.message= updatedpmpl.teams;
+          response.status= 201;
+          response.message= updatedpmpl.teams;
         }
-        res.status(response.status).json(response.message);
-        });
-        }
+           res.status(response.status).json(response.message);
+  });
+}
 
-
+// --------------------------------------------------------
         const fullupdate = function (req, res) {
           const pmplID = req.params.pmplID;
           const teamID = req.params.teamID;
@@ -115,6 +128,7 @@ const getTeams = function(req,res){
           });
         };
         
+// --------------------------------------------------------
 
         const patchUpdate = function (req, res) {
           const pmplID = req.params.pmplID;
@@ -149,7 +163,8 @@ const getTeams = function(req,res){
             }
           });
         };
-        
+     
+// --------------------------------------------------------
 
         const deleteTeam = function (req, res) {
           const pmplID = req.params.pmplID;
