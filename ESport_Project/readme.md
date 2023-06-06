@@ -9,7 +9,7 @@ The requirements are:
 
 1- A database-driven application.
 
-2- Your application has a document and an array of sub-documents (using one collection).
+2ESport- Your application has a document and an array of sub-documents (using one collection).
 
 3- Perform CRUD operations on the application's primary documents.
 
