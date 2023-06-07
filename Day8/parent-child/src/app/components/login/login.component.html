@@ -1,0 +1,33 @@
+<p>Template forms</p>
+
+<form #loginform = "ngForm" (ngSubmit)="login()">
+<!-- <form #loginform = "ngForm" (ngSubmit)="login(loginform)"> -->
+    <label>
+        username :
+        <input placeholder="username" name="username" [(ngModel)] ="username" />
+        <!-- two way binding -->
+    </label>
+    <label>
+        password :
+        <input placeholder="username" name="password" [(ngModel)] = "password"/>
+    </label>
+
+    <button type="submit">Login</button>
+   
+</form>
+
+<!-- template reference -->
+    <!-- <form #loginform = "ngForm" (ngSubmit)="login(loginform)">
+        <label>
+            username :
+            <input placeholder="username" name="username" [(ngModel)] ="username" />
+            <!-- two way binding -->
+        <!-- </label>
+        <label>
+            password :
+            <input placeholder="username" name="password" [(ngModel)] = "password"/>
+        </label>
+    
+        <button type="submit">Login</button> -->
+       
+    <!-- </form> --> -->

@@ -1,0 +1,11 @@
+<p>register works!</p>
+
+<!--  reactive forms  -->
+<form [formGroup]="registrationForm" (ngSubmit)= "register()">
+<div>
+    <input formControlName="name">
+    <input formControlName="username">
+    <input formControlName="password">
+    <input type="submit" >
+</div>
+</form>
