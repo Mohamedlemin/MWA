@@ -6,7 +6,6 @@ const {Course} = require('../database/courseSchema')
 async function getAllCourse(req,res){
    const courses = await Course.find()
    res.status(200).send(courses)
-   console.log(courses);
 }
 
 async function createCourse(req,res){
