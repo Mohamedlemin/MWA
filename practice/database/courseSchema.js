@@ -12,7 +12,7 @@ const Course = mongoose.model('Course', new mongoose.Schema(
         isPublished : Boolean
 
     }
-)
+),"courses"
 )
 
 exports.Course = Course
