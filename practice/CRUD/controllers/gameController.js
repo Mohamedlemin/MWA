@@ -49,6 +49,26 @@ function create(req,res) {
             res.status(500).json("err: ",err)
         })
     }
+function update(req,res) {
+   console.log("update game is called");
+   const gameId = new  mongoose.Types.ObjectId(req.params.id);
+   const newGame = {
+     title : req.body.title,
+     year : req.body.year,
+     rate : req.body.rate,
+     price : req.body.price,
+   }
+   Game.findOneAndUpdate({'_id':gameId},newGame,{new : true})
+        .then((createdGame)=>{
+            console.log(createdGame);
+            res.status(200).json(createdGame)
+        }).catch((err)=>{
+            res.status(500).json(err)
+            console.log(err);
+        })
+    }
+
+
 function removeGame(req,res) {
    console.log("get all called");
    const gameId = req.body.id
@@ -66,5 +86,5 @@ module.exports={
     getOne,
     create,
     removeGame,
-
+    update
 } 
