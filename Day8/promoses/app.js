@@ -81,3 +81,11 @@ myAsyncFunction = async function () {
 console.log("start");
 myAsyncFunction()
 console.log("Async func end");
+
+
+
+const print  =function (value) {
+    console.log("value",value);
+}
+
+Promise.then(print).catch
