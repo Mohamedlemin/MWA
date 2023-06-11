@@ -1,0 +1,21 @@
+
+
+<form (ngSubmit)="addOne()">
+    <!-- <form #loginform = "ngForm" (ngSubmit)="login(loginform)"> -->
+        <label>
+            title :
+            <input placeholder="title" name="title" [(ngModel)] ="job.title" />
+            <!-- two way binding -->
+        </label>
+        <label>
+            description :
+            <input placeholder="description" name="description" [(ngModel)] = "job.description"/>
+        </label>
+        <label>
+            salary :
+            <input placeholder="salary" name="salary" [(ngModel)] = "job.salary"/>
+        </label>
+    
+        <button type="submit">Login</button>
+       
+    </form>

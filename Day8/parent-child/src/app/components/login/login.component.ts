@@ -17,10 +17,7 @@ export class LoginComponent {
   
   login(){
     console.log("login called");
-
-    console.log(this.loginForm.form.value);
-    
-    
+    console.log(this.loginForm.form.value); 
   }
 // first way
   // login(form:NgForm){

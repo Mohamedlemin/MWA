@@ -11,6 +11,8 @@ export class GamesDataService {
   constructor(private httpClient: HttpClient) { }
 
   getAllGames() : Observable<Game[]>{
-    return this.httpClient.get<Game[]>(this._baseUrl)
+    return this.httpClient.get<Game[]>(this._baseUrl).pipe(
+      
+    )
   }
 }

@@ -1,0 +1,13 @@
+
+
+<div>
+    <h1>List of jobs</h1>
+    <button routerLink="add">Add</button>
+    <ul>
+        <li *ngFor ="let job of jobs">
+           <a routerLink="{{job._id}}">{{job.title}} </a> 
+        </li>
+    </ul>
+</div>
+
+
