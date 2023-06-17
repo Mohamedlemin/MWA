@@ -5,19 +5,24 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { TeamsComponent } from './teams/teams.component';
 import { PmplComponent } from './pmpl/pmpl.component';
+import { TeamComponent } from './team/team.component';
 
 const routes: Routes = [
   { path: 'dash', component: DashbordComponent },
   { path: '404', component: NotFoundComponent },
   { path: 'register', component: RegistrationComponent },
   { path: 'pmpl', component: PmplComponent },
-  { path: 'teams', component: TeamsComponent },
+  { path: 'team', component: TeamComponent },
+  {
+    path: 'pmpl/:id',
+    component: TeamsComponent,
+  },
   { path: '', redirectTo: 'dash', pathMatch: 'full' },
-  { path: '**', redirectTo: '/404' }, 
+  { path: '**', redirectTo: '/404' },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

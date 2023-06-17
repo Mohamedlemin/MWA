@@ -7,8 +7,10 @@ const teamController = require("../controllers/teamController")
 // PMPL routes
 router.route("/pmpls")
         .get(pmplController.getAll)
+      
         .post(pmplController.addOne)
 router.route("/pmpls/:pmplID")
+        .get(pmplController.getOne)
         .delete(pmplController.deletePMPL)
         .put(pmplController.FullupdatePMPL)
         .patch(pmplController.patchUpdate)

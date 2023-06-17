@@ -10,7 +10,7 @@ import { pmpl } from './models/pmpl.modle';
 export class PmplDataService {
 
 
-  private BASE_URL : string ="http://localhost:3000/api/pmpls"
+  private BASE_URL : string ="http://localhost:3000/api/pmpls/"
 
   constructor(private _http : HttpClient,private authService : AuthService) { }
 
@@ -19,9 +19,7 @@ export class PmplDataService {
   }
 
 
-  getAll(offset:number,count:number): Observable<pmpl[]> {
-    console.log("get all called");
-    
+  getAll(offset:number,count:number): Observable<pmpl[]> {    
     return this._http.get<pmpl[]>(this.BASE_URL+"?offset="+offset+"&count="+count);
   }
 

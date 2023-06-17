@@ -10,9 +10,11 @@ import { RegistrationComponent } from './registration/registration.component';
 import { TeamsComponent } from './teams/teams.component';
 import { LoginComponent } from './login/login.component';
 import { JWT_OPTIONS, JwtHelperService } from '@auth0/angular-jwt';
-import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { MyAuthInterceptor } from './my-auth.interceptor';
 import { PmplComponent } from './pmpl/pmpl.component';
+import { TeamComponent } from './team/team.component';
+import {YouTubePlayerModule} from '@angular/youtube-player';
 
 @NgModule({
   declarations: [
@@ -23,18 +25,20 @@ import { PmplComponent } from './pmpl/pmpl.component';
     RegistrationComponent,
     TeamsComponent,
     LoginComponent,
-    PmplComponent
+    PmplComponent,
+    TeamComponent,
   ],
   imports: [
-    BrowserModule,
+  BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    YouTubePlayerModule
   ],
   providers: [
     JwtHelperService,
-    {provide:JWT_OPTIONS,useValue:JWT_OPTIONS},
-    {provide:HTTP_INTERCEPTORS,useClass:MyAuthInterceptor,multi:true}
+    { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },
+    { provide: HTTP_INTERCEPTORS, useClass: MyAuthInterceptor, multi: true },
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

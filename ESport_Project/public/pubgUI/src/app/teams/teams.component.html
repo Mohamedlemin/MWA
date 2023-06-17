@@ -3,18 +3,18 @@
     <div class="max-w-2xl">
       <div>
         <div class="px-4 sm:px-0">
-          <h3 class="text-base font-semibold leading-7 text-gray-900">Applicant Information</h3>
-          <p class="mt-1 max-w-2xl text-sm leading-6 text-gray-500">Personal details and application.</p>
+          <h3 class="text-base font-semibold leading-7 text-gray-900"> Information</h3>
+          <p class="mt-1 max-w-2xl text-sm leading-6 text-gray-500">{{pmpl.title}}</p>
         </div>
         <div class="mt-6 border-t border-gray-100">
           <dl class="divide-y divide-gray-100">
             <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-              <dt class="text-sm font-medium leading-6 text-gray-900">Full name</dt>
-              <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">Margot Foster</dd>
+              <dt class="text-sm font-medium leading-6 text-gray-900">Region</dt>
+              <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{{pmpl.region}}</dd>
             </div>
             <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-              <dt class="text-sm font-medium leading-6 text-gray-900">Application for</dt>
-              <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">Backend Developer</dd>
+              <dt class="text-sm font-medium leading-6 text-gray-900">Prize</dt>
+              <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{{pmpl.prize}}</dd>
             </div>
          
          
@@ -24,43 +24,18 @@
       
     </div>
     
-    <ul role="list" class="grid gap-x-4 gap-y-8 sm:grid-cols-4 sm:gap-y-16 xl:col-span-2">
-      <li>
+    <ul role="list" class="grid gap-x-3 gap-y-8 sm:grid-cols-3 sm:gap-y-16 xl:col-span-2">
+      <li *ngFor="let team of pmpl.teams">
         <div class="flex items-center gap-x-6">
-          <a  routerLink="'/teams'"><img class="h-16 w-16 rounded-full" src="../../assets/images/pro.png" alt="" ></a>
+          <a  [routerLink]="'/team'"><img class="h-16 w-16 rounded-full" src="../../assets/images/pro.png" alt="" ></a>
           <div>
-            <h3 class="text-base font-semibold leading-7 tracking-tight text-gray-900">PMPL</h3>
-            <p class="text-sm font-semibold leading-6 text-indigo-600">Arabia</p>
+            <h3 class="text-base font-semibold leading-7 tracking-tight text-gray-900">{{team.name}}</h3>
+            <p class="text-sm font-semibold leading-6 text-indigo-600">{{team.country}}</p>
           </div>
         </div>
       </li>
-      <li>
-        <div class="flex items-center gap-x-6">
-          <img class="h-16 w-16 rounded-full" src="../../assets/images/pro.png" alt="">
-          <div>
-            <h3 class="text-base font-semibold leading-7 tracking-tight text-gray-900">PMPL </h3>
-            <p class="text-sm font-semibold leading-6 text-indigo-600">Africa</p>
-          </div>
-        </div>
-      </li>
-      <li>
-        <div class="flex items-center gap-x-6">
-          <img class="h-16 w-16 rounded-full" src="../../assets/images/pro.png" alt="">
-          <div>
-            <h3 class="text-base font-semibold leading-7 tracking-tight text-gray-900">PMPL </h3>
-            <p class="text-sm font-semibold leading-6 text-indigo-600">Africa</p>
-          </div>
-        </div>
-      </li>
-      <li>
-        <div class="flex items-center gap-x-6">
-          <img class="h-16 w-16 rounded-full" src="../../assets/images/pro.png" alt="">
-          <div>
-            <h3 class="text-base font-semibold leading-7 tracking-tight text-gray-900">PMPL </h3>
-            <p class="text-sm font-semibold leading-6 text-indigo-600">Africa</p>
-          </div>
-        </div>
-      </li>
+     
+      
      
      
      

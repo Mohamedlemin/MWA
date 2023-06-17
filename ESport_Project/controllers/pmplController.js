@@ -204,8 +204,19 @@ const deletePMPL = function (req, res) {
    
 };
 
+const getOne = function (req, res) {
+  const pmplID = req.params.pmplID;
+
+  pmpl.findById(pmplID)
+      .then((foundPmpl) => _handleNotFoundResponse(foundPmpl))
+      .catch((err) => responseHandler.setResponse(err, errorStatus500))
+      .finally(() => responseHandler.sendResponse(res));
+   
+};
+
 module.exports = {
   getAll,
+  getOne,
   addOne,
   FullupdatePMPL,
   patchUpdate,
