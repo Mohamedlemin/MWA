@@ -16,6 +16,8 @@ import { PmplComponent } from './pmpl/pmpl.component';
 import { TeamComponent } from './team/team.component';
 import {YouTubePlayerModule} from '@angular/youtube-player';
 import { PmplFormComponent } from './pmpl-form/pmpl-form.component';
+import { TemsFormComponent } from './tems-form/tems-form.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -29,12 +31,15 @@ import { PmplFormComponent } from './pmpl-form/pmpl-form.component';
     PmplComponent,
     TeamComponent,
     PmplFormComponent,
+    TemsFormComponent,
   ],
   imports: [
   BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    YouTubePlayerModule
+    YouTubePlayerModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [
     JwtHelperService,

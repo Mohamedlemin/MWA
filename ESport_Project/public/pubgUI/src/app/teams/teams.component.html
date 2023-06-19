@@ -16,19 +16,27 @@
               <dt class="text-sm font-medium leading-6 text-gray-900">Prize</dt>
               <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{{pmpl.prize}}</dd>
             </div>
-         
-         
+            <a href="#" class="inline-block rounded-md border
+              border-transparent bg-blue-600 px-16 py-1 
+              text-center
+              font-medium 
+              text-white 
+              mt-2
+              hover:bg-indigo-900" routerLink="/team-form">Add Team</a>
+
+
           </dl>
         </div>
       </div>
-      
+
     </div>
-    
+
     <ul role="list" class="grid gap-x-3 gap-y-8 sm:grid-cols-3 sm:gap-y-16 xl:col-span-2">
       <li *ngFor="let team of pmpl.teams">
-       
+
         <div class="flex items-center gap-x-6">
-          <a  [routerLink]="'/team/' + pmplId + '/' + team._id"><img class="h-16 w-16 rounded-full" src="../../assets/images/pro.png" alt="" ></a>
+          <a [routerLink]="'/team/' + pmplId + '/' + team._id"><img class="h-16 w-16 rounded-full"
+              src="../../assets/images/pro.png" alt=""></a>
           <div>
             <h3 class="text-base font-semibold leading-7 tracking-tight text-gray-900">{{team.name}}</h3>
             <p class="text-sm font-semibold leading-6 text-indigo-600">{{team.country}}</p>
@@ -38,15 +46,15 @@
                       font-medium 
                       text-white 
                       mt-2
-                      hover:bg-indigo-900"  routerLink="{{pmpl._id}}">Players</a>
+                      hover:bg-indigo-900" routerLink="{{pmpl._id}}">Players</a>
           </div>
         </div>
       </li>
-     
-      
-     
-     
-     
+
+
+
+
+
 
       <!-- More people... -->
     </ul>

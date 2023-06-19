@@ -6,12 +6,16 @@ import { RegistrationComponent } from './registration/registration.component';
 import { TeamsComponent } from './teams/teams.component';
 import { PmplComponent } from './pmpl/pmpl.component';
 import { TeamComponent } from './team/team.component';
+import { PmplFormComponent } from './pmpl-form/pmpl-form.component';
+import { TemsFormComponent } from './tems-form/tems-form.component';
 
 const routes: Routes = [
   { path: 'dash', component: DashbordComponent },
   { path: '404', component: NotFoundComponent },
   { path: 'register', component: RegistrationComponent },
   { path: 'pmpl', component: PmplComponent },
+  { path: 'form', component: PmplFormComponent },
+  { path: 'team-form', component: TemsFormComponent },
   { path: 'team/:pmplId/:teamId', component: TeamComponent },
   {
     path: 'pmpl/:id',

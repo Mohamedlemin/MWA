@@ -6,9 +6,17 @@
             It is organized by Level Infinite
             Currently, the PMPL is actively held across 6 regions, with a total of 14 leagues. 
         </p>
+        <a href="#" class="inline-block rounded-md border
+        border-transparent bg-blue-600 px-16 py-1 
+       text-center
+       font-medium 
+       text-white 
+       mt-2
+       hover:bg-indigo-900"  routerLink="/form">Add</a>
       </div>
       
       <ul role="list" class="grid gap-x-3 gap-y-8 sm:grid-cols-2 sm:gap-y-16 xl:col-span-2">
+       
         <li *ngFor="let pmpl of pmpls">
           <div class="flex items-center gap-x-6">
          <img class="h-16 w-16 rounded-full " src="../../assets/images/pro.png" alt="">
