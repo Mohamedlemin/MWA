@@ -7,6 +7,7 @@ export interface pmpl {
 }
 
 export interface Team {
+  _id:string
   name: string;
   country: string;
   Best_Moment_clip: string;

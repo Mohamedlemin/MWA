@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { AuthService } from './auth.service';
-import { pmpl } from './models/pmpl.modle';
+import { Team, pmpl } from './models/pmpl.modle';
 
 @Injectable({
   providedIn: 'root'
@@ -36,8 +36,8 @@ export class PmplDataService {
     return this._http.post<pmpl>(this.BASE_URL,pmpl)
   }
 
-  getSize():Observable<number>{
-    return this._http.get<number>(this.BASE_URL+'size')
+  getTeam(pmplId:string,teamID:string):Observable<Team>{
+    return this._http.get<Team>(this.BASE_URL+pmplId+"/teams/"+teamID)
   }
 
 }

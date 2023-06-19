@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { PmplDataService } from '../pmpl-data.service';
+import { ActivatedRoute } from '@angular/router';
+import { Team } from '../models/pmpl.modle';
 
 let apiLoaded = false;
 @Component({
@@ -7,6 +10,8 @@ let apiLoaded = false;
   styleUrls: ['./team.component.css']
 })
 export class TeamComponent implements OnInit {
+   constructor(private _pmplService : PmplDataService,private _activatedRoute:ActivatedRoute){}
+   team!:Team
   ngOnInit() {
     if (!apiLoaded) {
       // This code loads the IFrame Player API code asynchronously, according to the instructions at
@@ -16,5 +21,22 @@ export class TeamComponent implements OnInit {
       document.body.appendChild(tag);
       apiLoaded = true;
     }
+    this.getTeam();
   }
+  getTeam(){
+
+    const pmplId = this._activatedRoute.snapshot.params['pmplId']; 
+    const teamId = this._activatedRoute.snapshot.params['teamId']; 
+    this._pmplService.getTeam(pmplId,teamId).subscribe({
+      next:(team)=>{
+        this.team =team
+      },
+      error:(err)=>{
+        console.log(err);
+        
+      }
+    })
+  }
+
+
 }

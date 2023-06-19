@@ -12,7 +12,7 @@ const routes: Routes = [
   { path: '404', component: NotFoundComponent },
   { path: 'register', component: RegistrationComponent },
   { path: 'pmpl', component: PmplComponent },
-  { path: 'team', component: TeamComponent },
+  { path: 'team/:pmplId/:teamId', component: TeamComponent },
   {
     path: 'pmpl/:id',
     component: TeamsComponent,

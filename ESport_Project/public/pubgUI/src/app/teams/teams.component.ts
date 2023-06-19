@@ -18,10 +18,10 @@ export class TeamsComponent {
   offset =0;
   count=5;
   pmpl!:pmpl
-
+  pmplId!:string
   getOne() {
     const id = this.activeRoute.snapshot.params['id']; 
-
+    this.pmplId =id
     this.pmplService.getOne(id).subscribe({
       next: (pmpl) => {
         this.pmpl = pmpl;
