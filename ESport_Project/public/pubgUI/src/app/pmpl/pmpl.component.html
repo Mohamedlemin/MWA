@@ -11,10 +11,21 @@
       <ul role="list" class="grid gap-x-3 gap-y-8 sm:grid-cols-2 sm:gap-y-16 xl:col-span-2">
         <li *ngFor="let pmpl of pmpls">
           <div class="flex items-center gap-x-6">
-            <a routerLink="{{pmpl._id}}"><img class="h-16 w-16 rounded-full" src="../../assets/images/pro.png" alt=""> </a> 
+         <img class="h-16 w-16 rounded-full " src="../../assets/images/pro.png" alt="">
+         <!-- <a routerLink="{{pmpl._id}}"> -->
             <div>
               <h3 class="text-base font-semibold leading-7 tracking-tight text-gray-900">{{pmpl.region}}</h3>
-              <p class="text-sm font-semibold leading-6 text-indigo-600" [routerLink]="'/teams'" >{{pmpl.title}}</p>
+              <p class="text-sm font-semibold leading-6 text-indigo-600"  >{{pmpl.title}}</p>
+              <p class="text-sm font-semibold leading-6 text-indigo-600"  >        
+                      <a href="#" class="inline-block rounded-md border
+                       border-transparent bg-blue-600 px-4 py-1 
+                      text-center
+                      font-medium 
+                      text-white 
+                      mt-2
+                      hover:bg-indigo-900"  routerLink="{{pmpl._id}}">Teams</a>
+              </p>
+
             </div>
           </div>
         </li>

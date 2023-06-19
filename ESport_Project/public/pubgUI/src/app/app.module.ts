@@ -15,6 +15,7 @@ import { MyAuthInterceptor } from './my-auth.interceptor';
 import { PmplComponent } from './pmpl/pmpl.component';
 import { TeamComponent } from './team/team.component';
 import {YouTubePlayerModule} from '@angular/youtube-player';
+import { PmplFormComponent } from './pmpl-form/pmpl-form.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import {YouTubePlayerModule} from '@angular/youtube-player';
     LoginComponent,
     PmplComponent,
     TeamComponent,
+    PmplFormComponent,
   ],
   imports: [
   BrowserModule,

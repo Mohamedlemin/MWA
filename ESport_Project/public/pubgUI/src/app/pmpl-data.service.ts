@@ -10,34 +10,34 @@ import { Team, pmpl } from './models/pmpl.modle';
 export class PmplDataService {
 
 
-  private BASE_URL : string ="http://localhost:3000/api/pmpls/"
+  private BASE_URL: string = "http://localhost:3200/api/pmpls/"
 
-  constructor(private _http : HttpClient,private authService : AuthService) { }
+  constructor(private _http: HttpClient, private authService: AuthService) { }
 
-  public delete():Observable<any>{
+  public delete(): Observable<any> {
     return this._http.delete("")
   }
 
 
-  getAll(offset:number,count:number): Observable<pmpl[]> {    
-    return this._http.get<pmpl[]>(this.BASE_URL+"?offset="+offset+"&count="+count);
+  getAll(offset: number, count: number): Observable<pmpl[]> {
+    return this._http.get<pmpl[]>(this.BASE_URL + "?offset=" + offset + "&count=" + count);
   }
 
 
-  getOne(id:String):Observable<pmpl> {
-    return this._http.get<pmpl>(this.BASE_URL+id);
+  getOne(id: String): Observable<pmpl> {
+    return this._http.get<pmpl>(this.BASE_URL + id);
   }
 
-  deleteOne(id:String):Observable<pmpl> {
-    return this._http.delete<pmpl>(this.BASE_URL+id);
+  deleteOne(id: String): Observable<pmpl> {
+    return this._http.delete<pmpl>(this.BASE_URL + id);
   }
 
-  create(pmpl:pmpl): Observable<pmpl> {
-    return this._http.post<pmpl>(this.BASE_URL,pmpl)
+  create(pmpl: pmpl): Observable<pmpl> {
+    return this._http.post<pmpl>(this.BASE_URL, pmpl)
   }
 
-  getTeam(pmplId:string,teamID:string):Observable<Team>{
-    return this._http.get<Team>(this.BASE_URL+pmplId+"/teams/"+teamID)
+  getTeam(pmplId: string, teamID: string): Observable<Team> {
+    return this._http.get<Team>(this.BASE_URL + pmplId + "/teams/" + teamID)
   }
 
 }
