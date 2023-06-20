@@ -8,6 +8,7 @@ import { PmplComponent } from './pmpl/pmpl.component';
 import { TeamComponent } from './team/team.component';
 import { PmplFormComponent } from './pmpl-form/pmpl-form.component';
 import { TemsFormComponent } from './tems-form/tems-form.component';
+import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
   { path: 'dash', component: DashbordComponent },
@@ -15,6 +16,7 @@ const routes: Routes = [
   { path: 'register', component: RegistrationComponent },
   { path: 'pmpl', component: PmplComponent },
   { path: 'form', component: PmplFormComponent },
+  { path: 'login', component: LoginComponent },
   { path: 'team-form', component: TemsFormComponent },
   { path: 'team/:pmplId/:teamId', component: TeamComponent },
   {

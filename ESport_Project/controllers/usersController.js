@@ -5,12 +5,12 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
 const createUser = (req, res) => {
-    const { username, password } = req.body;
+    const { name,username, password } = req.body;
   
     bcrypt.genSalt(10)
       .then(salt => bcrypt.hash(password, salt))
       .then(hashedPassword => {
-        const user = { username, password: hashedPassword };
+        const user = { name,username, password: hashedPassword };
         return User.getModel().create(user);
       })
       .then(() => {
