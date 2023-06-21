@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PmplDataService } from '../pmpl-data.service';
 import { pmpl } from '../models/pmpl.modle';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-pmpl',
@@ -8,7 +9,7 @@ import { pmpl } from '../models/pmpl.modle';
   styleUrls: ['./pmpl.component.css']
 })
 export class PmplComponent implements OnInit{
-  constructor(private pmplService : PmplDataService){}
+  constructor(private pmplService : PmplDataService,private authService:AuthService){}
   ngOnInit(): void {
     this.getAll()
   }
@@ -27,5 +28,8 @@ export class PmplComponent implements OnInit{
         console.log(error);
       },
     });
+  }
+  get isLoggedIn(): boolean {    
+    return this.authService.islogging;
   }
 }

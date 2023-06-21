@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { PmplDataService } from '../pmpl-data.service';
 import { ActivatedRoute } from '@angular/router';
 import { pmpl } from '../models/pmpl.modle';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-teams',
@@ -10,7 +11,8 @@ import { pmpl } from '../models/pmpl.modle';
 })
 export class TeamsComponent {
   constructor(private pmplService : PmplDataService
-    ,private activeRoute : ActivatedRoute){}
+    ,private activeRoute : ActivatedRoute
+    ,private authService:AuthService){}
   ngOnInit(): void {
     this.getOne()
   }
@@ -31,5 +33,19 @@ export class TeamsComponent {
         console.log(error);
       },
     });
+  }
+  deletePmpl(id:string){
+    this.pmplService.deleteOne(id).subscribe({
+      next:(response)=>{
+        console.log(response);
+      },
+      error:(err)=>{
+        console.log(err);
+      }
+    })
+  }
+
+  get isLoggedIn(): boolean {    
+    return this.authService.islogging;
   }
 }

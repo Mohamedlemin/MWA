@@ -12,7 +12,7 @@
        font-medium 
        text-white 
        mt-2
-       hover:bg-indigo-900"  routerLink="/form">Add</a>
+       hover:bg-indigo-900" *ngIf="isLoggedIn" routerLink="/form">Add</a>
       </div>
       
       <ul role="list" class="grid gap-x-3 gap-y-8 sm:grid-cols-2 sm:gap-y-16 xl:col-span-2">
