@@ -14,9 +14,6 @@ export class PmplDataService {
 
   constructor(private _http: HttpClient, private authService: AuthService) { }
 
-  public delete(): Observable<any> {
-    return this._http.delete("")
-  }
 
 
   getAll(offset: number, count: number): Observable<pmpl[]> {

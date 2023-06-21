@@ -17,7 +17,7 @@ const routes: Routes = [
   { path: 'pmpl', component: PmplComponent },
   { path: 'form', component: PmplFormComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'team-form', component: TemsFormComponent },
+  { path: 'team-form/:pmplId', component: TemsFormComponent },
   { path: 'team/:pmplId/:teamId', component: TeamComponent },
   {
     path: 'pmpl/:id',

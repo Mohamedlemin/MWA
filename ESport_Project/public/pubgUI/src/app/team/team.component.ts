@@ -40,6 +40,18 @@ export class TeamComponent implements OnInit {
     })
   }
 
+  deleteTeam(){
+    // this._pmplService.deleteOne(id).subscribe({
+    //   next:(response)=>{
+    //     console.log(response);
+    //   },
+    //   error:(err)=>{
+    //     console.log(err);
+    //   }
+    // })
+  }
+  
+
   
 
 

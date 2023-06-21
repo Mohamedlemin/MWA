@@ -1,9 +1,24 @@
 
 const mongoose = require("mongoose")
 
+// export interface Team {
+  //   _id:string;
+  //   name: string;
+  //   country: string;
+  //   Best_Moment_clip: string;
+  //   Description_clip: string;
+  //   teamLogo:string
+  //   players: Player[];
+  // }
+  
+  // export interface Player {
+  //   name: string;
+  //   picture: string;
+  //   role: string;
+  // }
 const playerSchema = new mongoose.Schema({
     name: String,
-    country: String,
+    picture: String,
     role: String
   });
 
@@ -12,6 +27,7 @@ const teamSchema = mongoose.Schema({
     country : String,
     Best_Moment_clip : String,
     Description_clip :String,
+    teamLogo:String,
     players: [playerSchema]
 })
 
@@ -23,6 +39,9 @@ const pmplSchema = mongoose.Schema({
     teams : [teamSchema] 
 
 })
+
+
+
 
 
 

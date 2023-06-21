@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Team, pmpl } from '../models/pmpl.modle';
-import { FormBuilder, FormGroup } from '@angular/forms';
-import { TeamForm } from '../models/form-modle';
+import { Team } from '../models/pmpl.modle';
 import { TeamServiceService } from '../team-service.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-tems-form',
@@ -17,11 +16,11 @@ export class TemsFormComponent implements OnInit {
     country: '',
     Best_Moment_clip: '',
     Description_clip: '',
+    teamLogo:'',
     players: [ {
       name:'',
-      country: '',
+      picture: '',
       role: '',
-      _id: ''
     },
     // {
     //   name:'',
@@ -44,25 +43,28 @@ export class TemsFormComponent implements OnInit {
   ]
     
   };
+  
+  pmplId!:string
 
-  constructor(private teamService: TeamServiceService) {}
+  constructor(private teamService: TeamServiceService,
+    private activeRoute : ActivatedRoute) {}
   ngOnInit(): void {
     throw new Error('Method not implemented.');
   }
-
+  
   onSubmit() {
     console.log(this.teamForm);
+    const id = this.activeRoute.snapshot.params['pmplId']; 
+    this.pmplId =id
 
-    // this.teamService.create(this.teamForm.value)
-    //   .subscribe({
-    //     next: (response:any) => {
-    //       console.log('Team created successfully:', response);
-    //       // Reset the form after successful submission
-    //       this.teamForm.reset();
-    //     },
-    //     error: (error:any) => {
-    //       console.error('Error creating team:', error);
-    //     }
-    //   });
+    this.teamService.create(this.teamForm,this.pmplId)
+      .subscribe({
+        next: (response:any) => {
+          console.log('Team created successfully:', response);
+        },
+        error: (error:any) => {
+          console.error('Error creating team:', error);
+        }
+      });
   }
 }
