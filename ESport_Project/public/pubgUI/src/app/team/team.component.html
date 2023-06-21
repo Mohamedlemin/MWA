@@ -3,49 +3,27 @@
   <div class="mx-auto max-w-2xl px-4 py-6 sm:px-6 sm:py-3 lg:max-w-7xl lg:px-8">
     
     <!-- <h2 class="text-2xl font-mono-bold tracking-tight text-gray-900">Team : {{team.name}} </h2> -->
-    <h2 class="text-2xl font-mono-bold tracking-tight text-gray-900">Team  : {{team.name}}</h2>
-
-    <div class="flex items-center">
-      <h2 class="text-2xl font-mono tracking-tight text-gray-900">Country : {{team.country}}</h2>
-
-      <div class="flex items-center ml-10">
-        <a href="#" class="inline-block rounded-md border 
-        border-transparent bg-red-600 px-4 py-1 
-        font-medium text-white mt-2 hover:bg-red-700
-        " (click)="deleteTeam(team._id)">
+    <div class="mt-6">
+      <div class="flex items-center">
+        <h2 class="text-2xl font-mono-bold tracking-tight text-gray-900">Team : {{team.name}}</h2>
+        <div class="mx-6"></div> <!-- Add spacing between elements -->
+        <h2 class="text-2xl font-mono tracking-tight text-gray-900">Country : {{team.country}}</h2>
+        <div class="ml-auto"></div> <!-- Add spacing between elements -->
+        <a class="inline-block rounded-md border border-transparent bg-red-600 px-4 py-1 font-medium text-white mt-2 hover:bg-red-700"
+          (click)="deleteTeam(); $event.stopPropagation();">
           Delete the Team
         </a>
       </div>
-
     </div>
     
+    
+    
+ 
 
-    <div class="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-2 xl:gap-x-8">
-      <div class="group relative">
-        <h3 class="text-2xl font-mono tracking-tight text-gray-900">Best moments</h3>
-          <youtube-player
-          class="border border-gray-300 rounded"
-          videoId="SUQlqxgp6SQ"
-          [startSeconds]="0"
-          [width]="560"
-          [height]="315"
-        ></youtube-player>
-      </div>
-      <div class="group relative">
-        <h3 class="text-2xl font-mono tracking-tight text-gray-900">Team description</h3>
+    <br><br>
+    
 
-          <youtube-player
-          class="border border-gray-300 rounded"
-          videoId="kmSPgklaviQ"  
-          [startSeconds]="0"
-          [width]="560"
-          [height]="315"
-        ></youtube-player>
-     
-      </div>
-
-      <!-- More products... -->
-    </div>
+   
 
     <h2 class="text-2xl font-bold tracking-tight text-gray-900">Players</h2>
 
@@ -112,6 +90,33 @@
           </div>
         </div>
       </div>
+    </div>
+
+    <div class="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-2 xl:gap-x-8">
+      <div class="group relative">
+        <h3 class="text-2xl font-mono tracking-tight text-gray-900">Best moments</h3>
+          <youtube-player
+          class="border border-gray-300 rounded"
+          videoId="SUQlqxgp6SQ"
+          [startSeconds]="0"
+          [width]="560"
+          [height]="315"
+        ></youtube-player>
+      </div>
+      <div class="group relative">
+        <h3 class="text-2xl font-mono tracking-tight text-gray-900">Team description</h3>
+
+          <youtube-player
+          class="border border-gray-300 rounded"
+          videoId="kmSPgklaviQ"  
+          [startSeconds]="0"
+          [width]="560"
+          [height]="315"
+        ></youtube-player>
+     
+      </div>
+
+      <!-- More products... -->
     </div>
   </div>
 

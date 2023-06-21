@@ -15,8 +15,8 @@ export class TeamServiceService {
     
     return this.http.post<any>(this.apiUrl+'/'+pmplId+'/teams', teamForm);
   }
-
-  // deleteOne(id: String): Observable<pmpl> {
-  //   return this.http.delete<pmpl>(this.BASE_URL + id);
-  // }
+  
+  deleteOne(pmplId: String,teamId:string): Observable<Team> {
+    return this.http.delete<Team>(this.apiUrl+'/'+ pmplId+'/teams/'+teamId);
+  }
 }
