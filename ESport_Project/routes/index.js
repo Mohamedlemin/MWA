@@ -21,9 +21,11 @@ router.route("/pmpls")
     .get(pmplController.getAll)
     .post(pmplController.addOne)
 router.route("/pmpls/:pmplID")
+    .get(pmplController.getOne)
     .delete(pmplController.deletePMPL)
     .put(pmplController.FullupdatePMPL)
     .patch(pmplController.patchUpdate)
+
 
 
 // teams routes
@@ -41,7 +43,7 @@ router
     .post(userController.createUser)
 
 router
-    .route("/login")
+    .route("/users/login")
     .post(userController.login)
 
 

@@ -20,6 +20,7 @@ export class UserDataService {
     };
     console.log("sign up called");
     
+    
     return this.http.post(`${this.baseUrl}`, signInData);
   }
 
@@ -29,6 +30,8 @@ export class UserDataService {
 
   
   login(user: User): Observable<any> {
+    console.log(this.baseUrl+"/login");
+    
     return this.http.post<any>(this.baseUrl+"/login", user);
   }
 }
