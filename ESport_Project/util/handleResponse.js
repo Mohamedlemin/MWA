@@ -10,8 +10,6 @@ const setResponse = function (customMsg,customStatus) {
   }
 
 const sendResponse = function sendResponse(res) {
-    console.log("response clled");
-    console.log(typeof(res));
     res.status(response.status).json(response.message);
   }
 

@@ -11,7 +11,9 @@ const teamCollection = process.env.TEAM_COLLECTION;
 // --------------------------------------------------------
 
 const getTeams = function (req, res) {
+  console.log("get Teams called");
   const pmplID = req.params.pmplID;
+  console.log(pmplID);
   pmpl
     .findById(pmplID)
     .select(teamCollection)
@@ -40,6 +42,8 @@ const getTeams = function (req, res) {
 const getOneTeam = function (req, res) {
   const pmplID = req.params.pmplID;
   const teamID = req.params.teamID;
+  console.log("get on team called");
+  console.log(pmplID);
   pmpl
     .findById(pmplID)
     .select("teams")

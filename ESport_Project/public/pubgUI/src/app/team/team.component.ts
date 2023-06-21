@@ -24,10 +24,12 @@ export class TeamComponent implements OnInit {
     this.getTeam();
   }
   getTeam(){
-
+     console.log("get team called");
+     
     const pmplId = this._activatedRoute.snapshot.params['pmplId']; 
     const teamId = this._activatedRoute.snapshot.params['teamId']; 
     this._pmplService.getTeam(pmplId,teamId).subscribe({
+
       next:(team)=>{
         this.team =team
       },
@@ -37,6 +39,8 @@ export class TeamComponent implements OnInit {
       }
     })
   }
+
+  
 
 
 }
