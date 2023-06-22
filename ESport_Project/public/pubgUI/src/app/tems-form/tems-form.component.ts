@@ -20,26 +20,23 @@ export class TemsFormComponent implements OnInit {
     players: [ {
       name:'',
       picture: '',
-      role: '',
+      role: ''
     },
-    // {
-    //   name:'',
-    //   country: '',
-    //   role: '',
-    //   _id: ''
-    // },
-    // {
-    //   name:'',
-    //   country: '',
-    //   role: '',
-    //   _id: ''
-    // },
-    // {
-    //   name:'',
-    //   country: '',
-    //   role: '',
-    //   _id: ''
-    // }
+    {
+      name:'',
+      picture: '',
+      role: ''
+    },
+    {
+      name:'',
+      picture: '',
+      role: ''
+    },
+    {
+      name:'',
+      picture: '',
+      role: ''
+    }
   ]
     
   };
@@ -54,8 +51,11 @@ export class TemsFormComponent implements OnInit {
   
   onSubmit() {
     console.log(this.teamForm);
+
     const id = this.activeRoute.snapshot.params['pmplId']; 
     this.pmplId =id
+
+    
 
     this.teamService.create(this.teamForm,this.pmplId)
       .subscribe({

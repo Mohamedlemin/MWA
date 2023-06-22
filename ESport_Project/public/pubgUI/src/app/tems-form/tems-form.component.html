@@ -30,20 +30,7 @@
         </div>
 
         <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-            <!--
-  This example requires some changes to your config:
-  
-  ```
-  // tailwind.config.js
-  module.exports = {
-    // ...
-    plugins: [
-      // ...
-      require('@tailwindcss/forms'),
-    ],
-  }
-  ```
--->
+ 
 <form   (ngSubmit)="onSubmit()">
     <div class="space-y-12">
       <div class="border-b border-gray-900/10 pb-12">
@@ -64,13 +51,21 @@
                     class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
             </div>
         </div>
+        <div class="sm:col-span-3">
+            <label for="teamlogo"
+                class="block text-sm font-medium leading-6 text-gray-900">Team Logo</label>
+            <div class="mt-2">
+                <input type="text" name="teamlogo" id="teamlogo" [(ngModel)]="teamForm.teamLogo" autocomplete="Country"  
+                    class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+            </div>
+        </div>
 
 
         <div class="sm:col-span-3">
             <label for="bestClip" class="block text-sm font-medium leading-6 text-gray-900">Best
                 moment clip</label>
             <div class="mt-2">
-                <input type="text" name="bestClip" id="bestClip" formControlName="bestMomentClip" autocomplete="bestClip"  [(ngModel)]="teamForm.Best_Moment_clip"
+                <input type="text" name="bestClip" id="bestClip" autocomplete="bestClip"  [(ngModel)]="teamForm.Best_Moment_clip"
                     class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
             </div>
         </div>
@@ -79,7 +74,7 @@
             <label for="descClip"
                 class="block text-sm font-medium leading-6 text-gray-900">Description clip</label>
             <div class="mt-2">
-                <input type="text" name="descClip" formControlName="descriptionClip" id="descClip" autocomplete="descClip" [(ngModel)]="teamForm.Description_clip"
+                <input type="text" name="descClip" id="descClip" autocomplete="descClip" [(ngModel)]="teamForm.Description_clip"
                     class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
             </div>
         </div>
@@ -109,24 +104,21 @@
         </div>
 
         <div class="sm:col-span-2">
-            <label for="postal-code" class="block text-sm font-medium leading-6 text-gray-900">Picture</label>
+            <label for="postal-code" class="block text-sm font-medium leading-6 text-gray-900">Picture path</label>
             <div class="mt-2">
-                <label for="p1_pic"
-                    class="relative cursor-pointer rounded-md bg-white font-semibold text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 hover:text-indigo-500">
-                    <span>Upload a file</span>
-                    <input id="p1_pic" name="p1_pic" formControlName="p1Picture" type="file" class="sr-only" onchange="handleFileUpload(event)">
-                </label>
+                <input type="text" name="p1_pic" id="p1_pic" autocomplete="p1_pic"  [(ngModel)]="teamForm.players[0].picture"
+                    class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
             </div>
         </div>
 
 
 
 
-        <!-- <div class="sm:col-span-2 sm:col-start-1">
-            <label for="p2_name" class="block text-sm font-medium leading-6 text-gray-900">P1-
+     <div class="sm:col-span-2 sm:col-start-1">
+            <label for="p2_name" class="block text-sm font-medium leading-6 text-gray-900">P2-
                 Name</label>
             <div class="mt-2">
-                <input type="text" name="p2_name" id="p2_name" formControlName="p2Name" autocomplete="p2_name" [(ngModel)]="p2_name"
+                <input type="text" name="p2_name" id="p2_name"  autocomplete="p2_name" [(ngModel)]="teamForm.players[1].name"
                     class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
             </div>
         </div>
@@ -135,31 +127,28 @@
             <label for="p2_role"
                 class="block text-sm font-medium leading-6 text-gray-900">Role</label>
             <div class="mt-2">
-                <input type="text" name="p2_role" id="p2_role" formControlName="p2Role" autocomplete="p2_role" [(ngModel)]="p2_role"
+                <input type="text" name="p2_role" id="p2_role"  autocomplete="p2_role" [(ngModel)]="teamForm.players[1].role"
                     class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
             </div>
         </div>
 
         <div class="sm:col-span-2">
-            <label for="postal-code" class="block text-sm font-medium leading-6 text-gray-900">Picture</label>
+            <label for="postal-code" class="block text-sm font-medium leading-6 text-gray-900">Picture path</label>
             <div class="mt-2">
-                <label for="p2_pic"
-                    class="relative cursor-pointer rounded-md bg-white font-semibold text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 hover:text-indigo-500">
-                    <span>Upload a file</span>
-                    <input id="p2_pic" name="p2_pic" type="file" formControlName="p2Picture" class="sr-only" onchange="handleFileUpload(event)">
-                </label>
+                <input type="text" name="p2_pic" id="p2_pic"  autocomplete="p2_role" [(ngModel)]="teamForm.players[1].picture"
+                    class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
             </div>
-        </div> -->
+        </div> 
 
 
 
 
-<!-- 
+ 
         <div class="sm:col-span-2 sm:col-start-1">
-            <label for="p3_name" class="block text-sm font-medium leading-6 text-gray-900">P1-
+            <label for="p3_name" class="block text-sm font-medium leading-6 text-gray-900">P3-
                 Name</label>
             <div class="mt-2">
-                <input type="text" name="p3_name" id="p3_name" formControlName="p3Name" autocomplete="p3_name" [(ngModel)]="p3_name"
+                <input type="text" name="p3_name" id="p3_name"  autocomplete="p3_name" [(ngModel)]="teamForm.players[2].name"
                     class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
             </div>
         </div>
@@ -168,7 +157,7 @@
             <label for="p3_role"
                 class="block text-sm font-medium leading-6 text-gray-900">Role</label>
             <div class="mt-2">
-                <input type="text" name="p3_role" id="p3_role" formControlName="p3Role" autocomplete="p3_role" [(ngModel)]="p3_role"
+                <input type="text" name="p3_role" id="p3_role"  autocomplete="p3_role" [(ngModel)]="teamForm.players[2].role"
                     class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
             </div>
         </div>
@@ -176,32 +165,38 @@
         <div class="sm:col-span-2">
             <label for="postal-code" class="block text-sm font-medium leading-6 text-gray-900">Picture</label>
             <div class="mt-2">
-                <label for="p3_pic"
-                    class="relative cursor-pointer rounded-md bg-white font-semibold text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 hover:text-indigo-500">
-                    <span>Upload a file</span>
-                    <input id="p3_pic" name="p3_pic" formControlName="p3Picture"  type="file" class="sr-only" onchange="handleFileUpload(event)">
-                </label>
+                <input type="text" name="p3_pic" id="p3_pic"  autocomplete="p3_pic" [(ngModel)]="teamForm.players[2].picture"
+                    class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
             </div>
         </div>
 
-        <div class="col-span-full">
-            <label for="cover-photo" class="block text-sm font-medium leading-6 text-gray-900">Team</label>
-            <div class="mt-2 flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10">
-              <div class="text-center">
-                <svg class="mx-auto h-12 w-12 text-gray-300" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                  <path fill-rule="evenodd" d="M1.5 6a2.25 2.25 0 012.25-2.25h16.5A2.25 2.25 0 0122.5 6v12a2.25 2.25 0 01-2.25 2.25H3.75A2.25 2.25 0 011.5 18V6zM3 16.06V18c0 .414.336.75.75.75h16.5A.75.75 0 0021 18v-1.94l-2.69-2.689a1.5 1.5 0 00-2.12 0l-.88.879.97.97a.75.75 0 11-1.06 1.06l-5.16-5.159a1.5 1.5 0 00-2.12 0L3 16.061zm10.125-7.81a1.125 1.125 0 112.25 0 1.125 1.125 0 01-2.25 0z" clip-rule="evenodd" />
-                </svg>
-                <div class="mt-4 flex text-sm leading-6 text-gray-600">
-                  <label for="file-upload" class="relative cursor-pointer rounded-md bg-white font-semibold text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 hover:text-indigo-500">
-                    <span>Upload a file</span>
-                    <input id="file-upload" name="file-upload" type="file" class="sr-only">
-                  </label>
-                  <p class="pl-1">or drag and drop</p>
-                </div>
-                <p class="text-xs leading-5 text-gray-600">PNG, JPG, GIF up to 10MB</p>
-              </div>
+        <div class="sm:col-span-2 sm:col-start-1">
+            <label for="p4_name" class="block text-sm font-medium leading-6 text-gray-900">P4-
+                Name</label>
+            <div class="mt-2">
+                <input type="text" name="p4_name" id="p4_name"  autocomplete="p4_name" [(ngModel)]="teamForm.players[3].name"
+                    class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
             </div>
-          </div> -->
+        </div>
+
+        <div class="sm:col-span-2">
+            <label for="p4_role"
+                class="block text-sm font-medium leading-6 text-gray-900">Role</label>
+            <div class="mt-2">
+                <input type="text" name="p4_role" id="p4_role"  autocomplete="p4_role" [(ngModel)]="teamForm.players[3].role"
+                    class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+            </div>
+        </div>
+
+        <div class="sm:col-span-2">
+            <label for="postal-code" class="block text-sm font-medium leading-6 text-gray-900">Picture</label>
+            <div class="mt-2">
+                <input type="text" name="p4_pic" id="p4_pic"  autocomplete="p3_pic" [(ngModel)]="teamForm.players[3].picture"
+                    class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+            </div>
+        </div>
+
+      
         
 
         
