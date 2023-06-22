@@ -1,0 +1,25 @@
+{
+  "name": "esport_project",
+  "version": "1.0.0",
+  "description": "Pubg Mobile Pro league",
+  "main": "app.js",
+  "scripts": {
+    "startBackEnd": "nodemon app.js",
+    "startFrontEnd": "cd public/pubgUI && npm start",
+    "start": "npm run startBackEnd | npm run startFrontEnd ",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@angular/cli": "^16.1.0",
+    "bcrypt": "^5.1.0",
+    "cors": "^2.8.5",
+    "cros": "^1.0.1",
+    "dotenv": "^16.1.3",
+    "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.0",
+    "mongoose": "^6.7.1",
+    "nodemon": "^2.0.22"
+  }
+}
