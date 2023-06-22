@@ -23,9 +23,9 @@
               text-white 
               mt-2
               hover:bg-indigo-900" *ngIf="isLoggedIn" routerLink="/team-form/{{pmpl._id}}">Add Team</a>
-              <button class="inline-block rounded-md border border-transparent bg-red-600 px-4 py-1 text-center font-medium text-white mt-2 hover:bg-red-700"
-              *ngIf="isLoggedIn"
-              (click)="deletePmpl(pmpl._id)">
+            <button
+              class="inline-block rounded-md border border-transparent bg-red-600 px-4 py-1 text-center font-medium text-white mt-2 hover:bg-red-700"
+              *ngIf="isLoggedIn" (click)="deletePmpl(pmpl._id)">
               Delete the PMPL
             </button>
 
@@ -53,6 +53,20 @@
                       mt-2
                       hover:bg-indigo-900" routerLink="{{pmpl._id}}">Players</a>
           </div>
+        </div>
+      </li>
+      <li></li>
+      <li></li>
+      <li>
+        <div class="flex items-center gap-x-6">
+
+          <a href="#" class="inline-block rounded-md border
+              border-transparent bg-green-600 px-20 py-1 
+              text-center
+              font-medium 
+              text-white 
+              mt-2
+            hover:bg-indigo-900" *ngIf="isLoggedIn" routerLink="/team-form/{{pmpl._id}}">Add Team</a>
         </div>
       </li>
 
