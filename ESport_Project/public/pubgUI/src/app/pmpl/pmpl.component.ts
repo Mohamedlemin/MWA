@@ -3,12 +3,14 @@ import { PmplDataService } from '../pmpl-data.service';
 import { pmpl } from '../models/pmpl.modle';
 import { AuthService } from '../auth.service';
 
+
 @Component({
   selector: 'app-pmpl',
   templateUrl: './pmpl.component.html',
-  styleUrls: ['./pmpl.component.css']
+  styleUrls: ['./pmpl.component.css'],
 })
 export class PmplComponent implements OnInit{
+  
   constructor(private pmplService : PmplDataService,private authService:AuthService){}
   ngOnInit(): void {
     this.getAll()
@@ -17,6 +19,8 @@ export class PmplComponent implements OnInit{
   offset =0;
   count=5;
   pmpls!:pmpl[]
+
+  
 
   getAll() {
     this.pmplService.getAll(this.offset, this.count).subscribe({

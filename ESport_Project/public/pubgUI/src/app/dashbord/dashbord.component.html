@@ -9,7 +9,11 @@
              are attended by amateur teams, while others feature the
               strongest teams on the planet
               </p>
-            <p class="mt-4 text-xl text-indigo-500">Total Prize Pool: $67,843,988</p>
+            <!-- <p class="mt-4 text-xl text-indigo-500">Total Prize Pool: $67,843,988</p> -->
+            <h2 class="text-4xl text-indigo-600" [@countAnimation]="counterState" (animationDone)="onAnimationDone()">
+              Total prize : ${{ counter }}
+            </h2>
+            
     <!-- <ul>
       <li>2023: $6 million</li>
       <li>2022: $24.72 million</li>
