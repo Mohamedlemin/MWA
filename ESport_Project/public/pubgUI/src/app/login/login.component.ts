@@ -29,7 +29,7 @@ export class LoginComponent {
     },
     error:(error)=>{
       console.log(error) 
-      this.toastr.error(environment.login_faild, environment.Error);
+      this.toastr.error(environment.login_failed, environment.Error);
 
      } 
   })

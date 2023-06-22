@@ -53,7 +53,7 @@ export class EditPmplComponent {
 
         },
         error:( error:any) => {
-          this.toastr.success(environment.update_Faild, environment.Error);
+          this.toastr.success(environment.update_Failed, environment.Error);
         }
       });
   

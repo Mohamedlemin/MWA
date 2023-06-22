@@ -46,7 +46,7 @@ export class PmplFormComponent {
       },
       error:( error:any) => {
         // console.error('Error creating pmpl:', error);
-        this.toastr.error(environment.Add_faild, environment.Error);
+        this.toastr.error(environment.Add_failed, environment.Error);
 
       }
     });

@@ -70,7 +70,7 @@ export class TemsFormComponent  {
         },
         error: (error:any) => {
           // console.error('Error creating team:', error);
-          this.toastr.error(environment.Add_faild, environment.Error);
+          this.toastr.error(environment.Add_failed, environment.Error);
 
         }
       });
