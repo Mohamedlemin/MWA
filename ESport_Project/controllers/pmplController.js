@@ -18,7 +18,7 @@ const errorStatus404 = parseInt(process.env.ERROR_STATUS_404);
 // --------------------------get All ------------------------------
 
 const getAll = function (req, res) {
-  console.log("get all called ");
+  // console.log("get all called ");
 
   const offset = parseInt(req.query.offset, parseInt(process.env.TEN)) || parseInt(process.env.DEFAULT_OFFSET);
   const count = parseInt(req.query.count, parseInt(process.env.TEN)) || parseInt(process.env.DEFAULT_COUNT);
@@ -36,7 +36,7 @@ const getAll = function (req, res) {
 
 
 
-// --------------------------------------------------------
+// -------------------------addOne-------------------------------
 
 
 const addOne = function (req, res) {

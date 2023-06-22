@@ -56,7 +56,6 @@ const addOneTeam = function (req, res) {
     .catch((err) => responseHandler.setResponse(err, errorStatus400))
     .finally(() => responseHandler.sendResponse(res));
 };
-// --------------------------------------------------------
 
 const _addTeam = function (pmpl, newTeam) {
   console.log("this is the team ",newTeam);
@@ -65,7 +64,7 @@ const _addTeam = function (pmpl, newTeam) {
 };
 
 
-// --------------------------------------------------------
+// ----------------------fullupdate----------------------------------
 const fullupdate = function (req, res) {
   const pmplID = req.params.pmplID;
   const teamID = req.params.teamID;
@@ -88,7 +87,7 @@ function _saveUpdatedTeam(foundPMPL, updatedData, teamID) {
   return foundPMPL.save(teamToUpdate);
 }
 
-// --------------------------------------------------------
+// ----------------------patchUpdate----------------------------------
 
 const patchUpdate = function (req, res) {
   const pmplID = req.params.pmplID;
@@ -112,7 +111,7 @@ function _patchUpdate(teamId, foundPMPL, updatedData) {
 
 
 
-// --------------------------------------------------------
+// ---------------------delete Team-----------------------------------
 
 const deleteTeam = function (req, res) {
   const pmplID = req.params.pmplID;

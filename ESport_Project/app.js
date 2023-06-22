@@ -22,6 +22,6 @@ app.use(process.env.API, router)
 
 
 
-app.listen(process.env.PORT, () => {
-    console.log("connected to the server");
-})
+const server= app.listen(process.env.PORT, function() {
+    console.log(process.env.MSG_SERVER_START, server.address().port);
+});

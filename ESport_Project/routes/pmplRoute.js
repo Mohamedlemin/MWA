@@ -1,18 +1,17 @@
 // PMPL routes
 const express = require("express");
 const pmplController = require("../controllers/pmplController")
-
+const requestValidator = require("../util/authValidator")
 const router = express.Router();
 
 router.route('')
         .get(pmplController.getAll)
-        .post(pmplController.addOne)
+        .post(requestValidator.isAuthorized,pmplController.addOne)
+
 router.route(process.env.PMPL_ID)
         .get(pmplController.getOne)
-        .delete(pmplController.deletePMPL)
-        .put(pmplController.FullupdatePMPL)
-        .patch(pmplController.patchUpdate)
-
-
-
+        .delete(requestValidator.isAuthorized,pmplController.deletePMPL)
+        .put(requestValidator.isAuthorized,pmplController.FullupdatePMPL)
+        .patch(requestValidator.isAuthorized,pmplController.patchUpdate)
+        
 module.exports = router;
