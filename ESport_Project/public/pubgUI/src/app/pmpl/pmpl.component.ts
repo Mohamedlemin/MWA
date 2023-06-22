@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PmplDataService } from '../pmpl-data.service';
 import { pmpl } from '../models/pmpl.modle';
 import { AuthService } from '../auth.service';
+import { environment } from 'src/environments/environment.development';
 
 
 @Component({
@@ -11,13 +12,14 @@ import { AuthService } from '../auth.service';
 })
 export class PmplComponent implements OnInit{
   
-  constructor(private pmplService : PmplDataService,private authService:AuthService){}
+  constructor(private pmplService : PmplDataService,
+    private authService:AuthService){}
   ngOnInit(): void {
     this.getAll()
   }
 
-  offset =0;
-  count=5;
+  offset =environment.zero;
+  count=environment.five;
   pmpls!:pmpl[]
 
   

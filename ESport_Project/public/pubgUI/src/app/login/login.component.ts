@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../auth.service';
-import { Observable } from 'rxjs';
 import { User } from '../models/user.modle';
-import { UserDataService } from '../user-data.service';
 import { Router } from '@angular/router';
+import { environment } from 'src/environments/environment.development';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +13,9 @@ import { Router } from '@angular/router';
 export class LoginComponent {
 
   user=  {} as User;
- constructor(private _auth:AuthService, private router: Router){}
+ constructor(private _auth:AuthService,
+  private toastr: ToastrService,
+  private router: Router){}
 
 
  login(){
@@ -21,9 +23,15 @@ export class LoginComponent {
     next:(data)=>{
       this._auth.token=data.token;
       console.log(this._auth.token);
-      this.router.navigateByUrl('/dash');
+      this.toastr.success(environment.login_success, environment.Success);
+      this.router.navigate(['/dash']);
+      // this.router.navigateByUrl('/dash');
     },
-    error:(error)=>console.log(error)   
+    error:(error)=>{
+      console.log(error) 
+      this.toastr.error(environment.login_faild, environment.Error);
+
+     } 
   })
  }
 }

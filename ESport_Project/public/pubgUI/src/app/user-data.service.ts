@@ -8,7 +8,7 @@ import { User } from './models/user.modle';
   providedIn: 'root'
 })
 export class UserDataService {
-  private baseUrl = environment.BASE_URL+"/users" ;
+  private baseUrl = environment.BASE_URL+"/"+environment.users ;
 
   constructor(private http: HttpClient) { }
 
@@ -18,20 +18,14 @@ export class UserDataService {
       password: password,
       name:name
     };
-    console.log("sign up called");
     
     
     return this.http.post(`${this.baseUrl}`, signInData);
   }
 
-  // singup(user: User): Observable<User> {
-  //   return this.http.post<User>(this.baseUrl, user);
-  // }
-
-  
   login(user: User): Observable<any> {
-    console.log(this.baseUrl+"/login");
+    console.log(this.baseUrl+"/"+environment.login);
     
-    return this.http.post<any>(this.baseUrl+"/login", user);
+    return this.http.post<any>(this.baseUrl+"/"+environment.login, user);
   }
 }

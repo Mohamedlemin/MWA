@@ -1,14 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { Team } from '../models/pmpl.modle';
 import { TeamServiceService } from '../team-service.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { environment } from 'src/environments/environment.development';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-tems-form',
   templateUrl: './tems-form.component.html',
   styleUrls: ['./tems-form.component.css']
 })
-export class TemsFormComponent implements OnInit {
+export class TemsFormComponent  {
    
   teamForm: Team ={
     _id:'',
@@ -44,10 +46,10 @@ export class TemsFormComponent implements OnInit {
   pmplId!:string
 
   constructor(private teamService: TeamServiceService,
-    private activeRoute : ActivatedRoute) {}
-  ngOnInit(): void {
-    throw new Error('Method not implemented.');
-  }
+    private activeRoute : ActivatedRoute,
+    private toastr: ToastrService,
+    private router: Router) {}
+
   
   onSubmit() {
     console.log(this.teamForm);
@@ -60,10 +62,16 @@ export class TemsFormComponent implements OnInit {
     this.teamService.create(this.teamForm,this.pmplId)
       .subscribe({
         next: (response:any) => {
-          console.log('Team created successfully:', response);
+          // console.log('Team created successfully:', response);
+
+        this.toastr.success(environment.Add_success, environment.Success);
+
+        this.router.navigate(['/pmpl/'+this.pmplId]);
         },
         error: (error:any) => {
-          console.error('Error creating team:', error);
+          // console.error('Error creating team:', error);
+          this.toastr.error(environment.Add_faild, environment.Error);
+
         }
       });
   }

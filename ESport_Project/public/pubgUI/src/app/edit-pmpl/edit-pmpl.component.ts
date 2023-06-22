@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import { PmplDataService } from '../pmpl-data.service';
-import { ActivatedRoute } from '@angular/router';
-import { AuthService } from '../auth.service';
+import { ActivatedRoute, Router } from '@angular/router';
 import { pmpl } from '../models/pmpl.modle';
+import { environment } from 'src/environments/environment.development';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-edit-pmpl',
@@ -10,7 +11,9 @@ import { pmpl } from '../models/pmpl.modle';
   styleUrls: ['./edit-pmpl.component.css']
 })
 export class EditPmplComponent {
-  constructor(private pmplService : PmplDataService
+  constructor(private pmplService : PmplDataService,
+    private toastr: ToastrService,
+    private router: Router
     ,private activeRoute : ActivatedRoute){}
 
     pmplForm= {} as pmpl ;  
@@ -25,10 +28,9 @@ export class EditPmplComponent {
       this.pmplService.getOne(this.pmplId).subscribe({
         next: (pmpl) => {
           this.pmplForm = pmpl;
-          console.log('pmpl retrieved successfully:', this.pmplForm);
         },
         error: (error) => {
-          console.error('Error retrieving park:', error);
+           console.error('Error retrieving pmpl:', error);
         }
       });
     }
@@ -38,7 +40,6 @@ export class EditPmplComponent {
       this.pmplService.create(this.pmplForm)
       .subscribe({
         next: (response:any) => {
-          console.log('Pmpl updated successfully:', response);
           this.pmplForm= {
             _id:'',
             title: '',
@@ -46,9 +47,13 @@ export class EditPmplComponent {
             region: '',
             teams: []
           };
+          this.toastr.success(environment.Update_success, environment.Success);
+
+          this.router.navigate(['/pmpl']);
+
         },
         error:( error:any) => {
-          console.error('Error updating pmpl:', error);
+          this.toastr.success(environment.update_Faild, environment.Error);
         }
       });
   

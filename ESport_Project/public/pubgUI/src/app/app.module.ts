@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -19,6 +20,7 @@ import { PmplFormComponent } from './pmpl-form/pmpl-form.component';
 import { TemsFormComponent } from './tems-form/tems-form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EditPmplComponent } from './edit-pmpl/edit-pmpl.component';
+import { ToastrModule, ToastrService } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -36,15 +38,22 @@ import { EditPmplComponent } from './edit-pmpl/edit-pmpl.component';
     EditPmplComponent,
   ],
   imports: [
-  BrowserModule,
+    BrowserModule,
     AppRoutingModule,
+    BrowserAnimationsModule,
     HttpClientModule,
     YouTubePlayerModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ToastrModule.forRoot({
+      timeOut: 3000, 
+      positionClass: 'toast-top-right', 
+      preventDuplicates: true, // Prevent duplicate toast notifications
+    }),
   ],
   providers: [
     JwtHelperService,
+    ToastrService,
     { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },
     { provide: HTTP_INTERCEPTORS, useClass: MyAuthInterceptor, multi: true },
   ],

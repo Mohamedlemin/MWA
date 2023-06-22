@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 
 import { UserDataService } from '../user-data.service';
+import { environment } from 'src/environments/environment.development';
+import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-registration',
@@ -8,7 +11,9 @@ import { UserDataService } from '../user-data.service';
   styleUrls: ['./registration.component.css']
 })
 export class RegistrationComponent {
-  constructor(private authService: UserDataService) { }
+  constructor(private authService: UserDataService,
+    private toastr: ToastrService,
+    private router: Router) { }
 
   name!: string;
   username!: string;
@@ -23,11 +28,14 @@ export class RegistrationComponent {
     this.authService.signUp(this.username, this.password,this.name)
     .subscribe({
       next:(response)=>{
-        console.log('Authentication successful:', response);
+        // console.log('Authentication successful:', response);
+        this.toastr.success(environment.register_success, environment.Success);
+        this.router.navigate(['/login']);
 
       },
       error: (err)=>{
-        console.error('Authentication failed:', err);
+        console.log(err);
+        this.toastr.error(environment.register_error, environment.Error);
 
       }
     });

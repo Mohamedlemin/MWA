@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
 import { PmplDataService } from '../pmpl-data.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { pmpl } from '../models/pmpl.modle';
 import { AuthService } from '../auth.service';
+import { ToastrService } from 'ngx-toastr';
+import { environment } from 'src/environments/environment.development';
 
 @Component({
   selector: 'app-teams',
@@ -11,14 +13,14 @@ import { AuthService } from '../auth.service';
 })
 export class TeamsComponent {
   constructor(private pmplService : PmplDataService
-    ,private activeRoute : ActivatedRoute
+    ,private activeRoute : ActivatedRoute,
+    private toastr: ToastrService,
+    private router: Router
     ,private authService:AuthService){}
   ngOnInit(): void {
     this.getOne()
   }
 
-  offset =0;
-  count=5;
   pmpl!:pmpl
   pmplId!:string
   getOne() {
@@ -38,9 +40,14 @@ export class TeamsComponent {
     this.pmplService.deleteOne(id).subscribe({
       next:(response)=>{
         console.log(response);
+        this.toastr.success(environment.Deleted_Success, environment.Success);
+        this.router.navigate(['/pmpl']); // Replace '/success-route' with your desired route
+
       },
       error:(err)=>{
         console.log(err);
+        this.toastr.error(environment.Delete_Error, environment.Error);
+
       }
     })
   }

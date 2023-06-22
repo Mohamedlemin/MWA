@@ -4,6 +4,8 @@ import { ActivatedRoute, Route, Router } from '@angular/router';
 import { Team } from '../models/pmpl.modle';
 import { TeamServiceService } from '../team-service.service';
 import { AuthService } from '../auth.service';
+import { environment } from 'src/environments/environment.development';
+import { ToastrService } from 'ngx-toastr';
 
 let apiLoaded = false;
 @Component({
@@ -16,8 +18,13 @@ export class TeamComponent implements OnInit {
     private authService:AuthService,
     private _activatedRoute:ActivatedRoute,
     private _router: Router,
+    private toastr: ToastrService,
+
     private _teamService: TeamServiceService){}
    team!:Team
+
+    pmplId!: string
+    teamId!: string
 
   ngOnInit() {
     if (!apiLoaded) {
@@ -38,16 +45,15 @@ export class TeamComponent implements OnInit {
   getTeam(){
      console.log("get team called");
      
-    const pmplId = this._activatedRoute.snapshot.params['pmplId']; 
-    const teamId = this._activatedRoute.snapshot.params['teamId']; 
-    this._pmplService.getTeam(pmplId,teamId).subscribe({
+     this.pmplId = this._activatedRoute.snapshot.params['pmplId']; 
+     this.teamId = this._activatedRoute.snapshot.params['teamId']; 
+    this._pmplService.getTeam(this.pmplId,this.teamId).subscribe({
 
       next:(team)=>{
         this.team =team
       },
       error:(err)=>{
-        console.log(err);
-        
+        console.log(err);      
       }
     })
   }
@@ -61,10 +67,14 @@ export class TeamComponent implements OnInit {
     this._teamService.deleteOne(pmplId,teamId).subscribe({
       next:(response)=>{
         console.log(response);
-        this._router.navigateByUrl(`/pmpl/${pmplId}`);
+        this.toastr.success(environment.Deleted_Success, environment.Success);
+        this._router.navigate(['/pmpl/'+this.pmplId]);
+        // this._router.navigateByUrl(`/pmpl/${pmplId}`);
       },
       error:(err)=>{
         console.log(err);
+        this.toastr.error(environment.Delete_Error, environment.Error);
+
       }
     })
   }
