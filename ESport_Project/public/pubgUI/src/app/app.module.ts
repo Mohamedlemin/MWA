@@ -18,6 +18,7 @@ import {YouTubePlayerModule} from '@angular/youtube-player';
 import { PmplFormComponent } from './pmpl-form/pmpl-form.component';
 import { TemsFormComponent } from './tems-form/tems-form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { EditPmplComponent } from './edit-pmpl/edit-pmpl.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     TeamComponent,
     PmplFormComponent,
     TemsFormComponent,
+    EditPmplComponent,
   ],
   imports: [
   BrowserModule,

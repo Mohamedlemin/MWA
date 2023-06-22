@@ -17,16 +17,16 @@
               <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{{pmpl.prize}}</dd>
             </div>
             <a href="#" class="inline-block rounded-md border
-              border-transparent bg-blue-600 px-4 py-1 
+              border-transparent bg-blue-600 px-10 py-1 
               text-center
               font-medium 
               text-white 
               mt-2
-              hover:bg-indigo-900" *ngIf="isLoggedIn" routerLink="/team-form/{{pmpl._id}}">Add Team</a>
+              hover:bg-indigo-900" *ngIf="isLoggedIn" routerLink="/pmpl/{{pmpl._id}}/edit">Update</a>
             <button
-              class="inline-block rounded-md border border-transparent bg-red-600 px-4 py-1 text-center font-medium text-white mt-2 hover:bg-red-700"
+              class="inline-block rounded-md border border-transparent bg-red-600 px-10 py-1 text-center font-medium text-white mt-2 hover:bg-red-700"
               *ngIf="isLoggedIn" (click)="deletePmpl(pmpl._id)">
-              Delete the PMPL
+              Delete 
             </button>
 
 

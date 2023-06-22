@@ -9,6 +9,7 @@ import { TeamComponent } from './team/team.component';
 import { PmplFormComponent } from './pmpl-form/pmpl-form.component';
 import { TemsFormComponent } from './tems-form/tems-form.component';
 import { LoginComponent } from './login/login.component';
+import { EditPmplComponent } from './edit-pmpl/edit-pmpl.component';
 
 const routes: Routes = [
   { path: 'dash', component: DashbordComponent },
@@ -19,10 +20,8 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'team-form/:pmplId', component: TemsFormComponent },
   { path: 'team/:pmplId/:teamId', component: TeamComponent },
-  {
-    path: 'pmpl/:id',
-    component: TeamsComponent,
-  },
+  { path: 'pmpl/:id',component: TeamsComponent},
+  { path: 'pmpl/:id/edit',component: EditPmplComponent},
   { path: '', redirectTo: 'dash', pathMatch: 'full' },
   { path: '**', redirectTo: '/404' },
 ];

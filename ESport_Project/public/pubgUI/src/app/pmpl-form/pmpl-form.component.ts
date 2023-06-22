@@ -22,11 +22,11 @@ export class PmplFormComponent {
   constructor(private pmpService:PmplDataService){}
 
   onSubmit(): void {
-   // const { _id, ...pmplFormWithoutId } = this.pmplForm;
+    // const { _id, ...pmplFormWithoutId } = this.pmplForm;
     this.pmpService.create(this.pmplForm)
     .subscribe({
       next: (response:any) => {
-        console.log('Park created successfully:', response);
+        console.log('Pmpl created successfully:', response);
         this.pmplForm={
           _id:'',
           title: '',
