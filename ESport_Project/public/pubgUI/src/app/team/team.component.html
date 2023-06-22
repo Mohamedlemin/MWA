@@ -10,6 +10,7 @@
         <h2 class="text-2xl font-mono tracking-tight text-gray-900">Country : {{team.country}}</h2>
         <div class="ml-auto"></div> <!-- Add spacing between elements -->
         <a class="inline-block rounded-md border border-transparent bg-red-600 px-4 py-1 font-medium text-white mt-2 hover:bg-red-700"
+          *ngIf="isLoggedIn"
           (click)="deleteTeam(); $event.stopPropagation();">
           Delete the Team
         </a>

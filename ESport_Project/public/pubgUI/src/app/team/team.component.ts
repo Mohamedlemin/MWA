@@ -3,6 +3,7 @@ import { PmplDataService } from '../pmpl-data.service';
 import { ActivatedRoute, Route, Router } from '@angular/router';
 import { Team } from '../models/pmpl.modle';
 import { TeamServiceService } from '../team-service.service';
+import { AuthService } from '../auth.service';
 
 let apiLoaded = false;
 @Component({
@@ -12,6 +13,7 @@ let apiLoaded = false;
 })
 export class TeamComponent implements OnInit {
    constructor(private _pmplService : PmplDataService,
+    private authService:AuthService,
     private _activatedRoute:ActivatedRoute,
     private _router: Router,
     private _teamService: TeamServiceService){}
@@ -28,6 +30,11 @@ export class TeamComponent implements OnInit {
     }
     this.getTeam();
   }
+
+  get isLoggedIn(): boolean {    
+    return this.authService.islogging;
+  }
+
   getTeam(){
      console.log("get team called");
      
@@ -61,6 +68,8 @@ export class TeamComponent implements OnInit {
       }
     })
   }
+
+
   
 
   
