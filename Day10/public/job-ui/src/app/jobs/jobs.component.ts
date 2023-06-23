@@ -16,6 +16,11 @@ export class JobsComponent implements OnInit {
 
   filter!: string;
 
+  offset = 0;
+  count = 5;
+  previousDisnable: boolean = true;
+  nextDisnable: boolean = false;
+
   // Pagination parameters.
   // p: number = 1;
   // count: number = 4;
@@ -29,10 +34,7 @@ export class JobsComponent implements OnInit {
     console.log(this.nextDisnable);
     console.log(this.listSize);
   }
-  offset = 0;
-  count = 5;
-  previousDisnable: boolean = true;
-  nextDisnable: boolean = false;
+  
   listSize!: number;
   filteredJobs!: Job[];
 
@@ -47,9 +49,7 @@ export class JobsComponent implements OnInit {
   onSelectChange(selectedValue: any) {
     console.log(selectedValue.value);
     this.count = parseInt(selectedValue.value);
-
     this.getAll();
-
     // Do something with the selected value
   }
 
@@ -59,20 +59,14 @@ export class JobsComponent implements OnInit {
       this.previousDisnable = true;
     }
     this.nextDisnable = false;
-    console.log(' prevous : ', this.previousDisnable);
-    console.log('offset :', this.offset);
-    console.log('count :', this.count);
-
     this.getAll();
   }
+
   next() {
     this.offset = this.offset + this.count;
     if (this.offset + this.count >= this.listSize) {
       this.nextDisnable = true;
     }
-    console.log('offset :', this.offset);
-    console.log('count :', this.count);
-
     this.previousDisnable = false;
 
     this.getAll();
